@@ -463,6 +463,10 @@ $sql = mysqli_query($con, "SELECT * FROM spo_org_login
                       <td><?php echo $row['location']; ?></td>
                       <td><?php echo $row['contact_number']; ?></td>
                       <td><?php echo $row['email']; ?></td>
+                      <td>
+                         <a href="deletesponsor.php?id=<?php echo $row['login_id']?>"><i class="fa fa-lg fa-trash" ></i> </a>
+                         </td>
+
 
                     </tr>
                     <?php

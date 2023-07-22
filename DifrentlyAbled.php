@@ -443,30 +443,40 @@ $sql = mysqli_query($con, "SELECT * FROM user_login
                     <th>ID</th>
                     <th>UDID</th>
                     <th>Name</th>
-                    <th>Age</th>
                     <th>Contact Number</th>
-                    <th>Email</th>
+                    <th>UDID Card</th>
                   </tr>
                 </thead>
-                <tbody>
-                <?php
-  
-  if($sql->num_rows>0){
+                <tbody>  <?php
+                if($sql->num_rows>0){
 
-    while($row=mysqli_fetch_array($sql)){
-        ?>
-                    <tr>
+while($row=mysqli_fetch_array($sql)){
+
+    $filename=($row['image']);
+    $path="http://localhost/dmithra/udidUpload/$filename";
+    ?>
+              
+                  
+              <tr>
                       <td><?php echo $row['login_id']; ?></td>
                       <td><?php echo $row['UDID']; ?></td>
                       <td><?php echo $row['name']; ?></td>
-                      <td><?php echo $row['age']; ?></td>
+                  
                       <td><?php echo $row['contact_number']; ?></td>
-                      <td><?php echo $row['email']; ?></td>
+                      <td>
+                  <img src="<?php echo $path; ?>" alt="image" height="80px" width="80px">  
+                  </td>
 
-                    </tr>
-                    <?php
-                   }  } 
-             ?>
+                      <td>
+                         <a href="deleteuser.php?id=<?php echo $row['login_id']?>"><i class="fa fa-lg fa-trash" ></i> </a>
+                         </td>
+
+
+                </tr> 
+                
+                <?php
+               }  } 
+         ?>  
                 </tbody>
               </table>
             </div>
